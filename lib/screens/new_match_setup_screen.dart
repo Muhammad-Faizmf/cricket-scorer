@@ -28,15 +28,15 @@ class _NewMatchSetupScreenState extends State<NewMatchSetupScreen> {
     final t1 = _teamOneController.text.trim();
     final t2 = _teamTwoController.text.trim();
     if (t1.isEmpty || t2.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Enter both team names')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Enter both team names')));
       return;
     }
     if (_battingTeam == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Choose who bats first')),
-      );
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Choose who bats first')));
       return;
     }
     final battingTeamName = _battingTeam!;
@@ -51,15 +51,17 @@ class _NewMatchSetupScreenState extends State<NewMatchSetupScreen> {
       oversLimit: _overs,
     );
 
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => PlayerSetupScreen(match: match),
-      ),
-    ).then((result) {
-      if (result is MatchModel && mounted) {
-        Navigator.of(context).pop(result);
-      }
-    });
+    Navigator.of(context)
+        .push(
+          MaterialPageRoute(
+            builder: (context) => PlayerSetupScreen(match: match),
+          ),
+        )
+        .then((result) {
+          if (result is MatchModel && mounted) {
+            Navigator.of(context).pop(result);
+          }
+        });
   }
 
   @override
@@ -150,7 +152,10 @@ class _NewMatchSetupScreenState extends State<NewMatchSetupScreen> {
                 const SizedBox(height: 8),
                 if (t1.isNotEmpty)
                   RadioListTile<String>(
-                    title: Text(t1, style: const TextStyle(color: Colors.white)),
+                    title: Text(
+                      t1,
+                      style: const TextStyle(color: Colors.white),
+                    ),
                     value: t1,
                     groupValue: _battingTeam,
                     activeColor: Colors.amber,
@@ -158,7 +163,10 @@ class _NewMatchSetupScreenState extends State<NewMatchSetupScreen> {
                   ),
                 if (t2.isNotEmpty)
                   RadioListTile<String>(
-                    title: Text(t2, style: const TextStyle(color: Colors.white)),
+                    title: Text(
+                      t2,
+                      style: const TextStyle(color: Colors.white),
+                    ),
                     value: t2,
                     groupValue: _battingTeam,
                     activeColor: Colors.amber,

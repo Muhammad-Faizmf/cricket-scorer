@@ -35,11 +35,13 @@ class ScoringButtons extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [1, 2, 3, 4, 5, 6]
-                .map((r) => _RunButton(
-                      runs: r,
-                      disabled: isMatchOver,
-                      onTap: () => onAddBall(Ball(runs: r, batsmanRuns: r)),
-                    ))
+                .map(
+                  (r) => _RunButton(
+                    runs: r,
+                    disabled: isMatchOver,
+                    onTap: () => onAddBall(Ball(runs: r, batsmanRuns: r)),
+                  ),
+                )
                 .toList(),
           ),
           const SizedBox(height: 8),
@@ -101,8 +103,8 @@ class _RunButton extends StatelessWidget {
     final color = runs == 4
         ? Colors.orange
         : runs == 6
-            ? Colors.green
-            : AppColors.ball1to5;
+        ? Colors.green
+        : AppColors.ball1to5;
     return Material(
       color: color.withOpacity(disabled ? 0.5 : 1),
       borderRadius: BorderRadius.circular(8),

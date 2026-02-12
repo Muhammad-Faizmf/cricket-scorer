@@ -53,7 +53,10 @@ class BattingCard extends StatelessWidget {
                     _tableHeaderCell('SR'),
                   ],
                 ),
-                for (final id in [strikerId, nonStrikerId].where((e) => e != null).cast<String>())
+                for (final id in [
+                  strikerId,
+                  nonStrikerId,
+                ].where((e) => e != null).cast<String>())
                   if (battingStats.containsKey(id) && !battingStats[id]!.isOut)
                     TableRow(
                       children: _buildBattingRow(
@@ -70,7 +73,11 @@ class BattingCard extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildBattingRow(PlayerStats p, bool isStriker, bool isNonStriker) {
+  List<Widget> _buildBattingRow(
+    PlayerStats p,
+    bool isStriker,
+    bool isNonStriker,
+  ) {
     return [
       Padding(
         padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
@@ -79,7 +86,11 @@ class BattingCard extends StatelessWidget {
             if (isStriker)
               Padding(
                 padding: const EdgeInsets.only(right: 6),
-                child: Icon(Icons.sports_cricket, size: 14, color: Colors.amber.shade300),
+                child: Icon(
+                  Icons.sports_cricket,
+                  size: 14,
+                  color: Colors.amber.shade300,
+                ),
               ),
             Expanded(
               child: Text(
@@ -87,7 +98,9 @@ class BattingCard extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 14,
-                  fontWeight: (isStriker || isNonStriker) ? FontWeight.w600 : FontWeight.normal,
+                  fontWeight: (isStriker || isNonStriker)
+                      ? FontWeight.w600
+                      : FontWeight.normal,
                 ),
                 overflow: TextOverflow.ellipsis,
               ),
@@ -104,22 +117,22 @@ class BattingCard extends StatelessWidget {
   }
 
   Widget _tableHeaderCell(String text) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Colors.amber.shade300,
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      );
+    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+    child: Text(
+      text,
+      style: TextStyle(
+        color: Colors.amber.shade300,
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
+  );
 
   Widget _tableCell(String text) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
-        child: Text(
-          text,
-          style: TextStyle(color: Colors.amber.shade200, fontSize: 14),
-        ),
-      );
+    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
+    child: Text(
+      text,
+      style: TextStyle(color: Colors.amber.shade200, fontSize: 14),
+    ),
+  );
 }

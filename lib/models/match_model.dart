@@ -17,13 +17,15 @@ class MatchModel {
   int currentOverIndex; // 0-based over number (e.g. 5.2 = over 5, ball 2)
   int ballsInCurrentOver;
 
-  final List<String> battingOrder; // player ids in order (first two are openers)
+  final List<String>
+  battingOrder; // player ids in order (first two are openers)
   final List<String> bowlingOrder;
   final Map<String, PlayerStats> battingStats;
   final Map<String, BowlerStats> bowlingStats;
 
   final List<List<Ball>> overs; // overs[0] = first over list of balls
-  final List<String> overBowlers; // bowler who bowled each over (same index as overs)
+  final List<String>
+  overBowlers; // bowler who bowled each over (same index as overs)
   final List<Ball> currentOverBalls;
 
   int strikerIndex; // index in battingOrder
@@ -58,14 +60,14 @@ class MatchModel {
     this.currentBowlerIndex = 0,
     this.target,
     this.isSecondInnings = false,
-  })  : createdAt = createdAt ?? DateTime.now(),
-        battingOrder = battingOrder ?? [],
-        bowlingOrder = bowlingOrder ?? [],
-        battingStats = battingStats ?? {},
-        bowlingStats = bowlingStats ?? {},
-        overs = overs ?? [],
-        overBowlers = overBowlers ?? [],
-        currentOverBalls = currentOverBalls ?? [];
+  }) : createdAt = createdAt ?? DateTime.now(),
+       battingOrder = battingOrder ?? [],
+       bowlingOrder = bowlingOrder ?? [],
+       battingStats = battingStats ?? {},
+       bowlingStats = bowlingStats ?? {},
+       overs = overs ?? [],
+       overBowlers = overBowlers ?? [],
+       currentOverBalls = currentOverBalls ?? [];
 
   bool get isCompleted => completedAt != null;
 
@@ -100,49 +102,57 @@ class MatchModel {
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
-        'teamOneName': teamOneName,
-        'teamTwoName': teamTwoName,
-        'battingTeamName': battingTeamName,
-        'bowlingTeamName': bowlingTeamName,
-        'oversLimit': oversLimit,
-        'createdAt': createdAt.toIso8601String(),
-        'completedAt': completedAt?.toIso8601String(),
-        'totalRuns': totalRuns,
-        'totalWickets': totalWickets,
-        'currentOverIndex': currentOverIndex,
-        'ballsInCurrentOver': ballsInCurrentOver,
-        'battingOrder': battingOrder,
-        'bowlingOrder': bowlingOrder,
-        'battingStats': battingStats.map((k, v) => MapEntry(k, v.toJson())),
-        'bowlingStats': bowlingStats.map((k, v) => MapEntry(k, v.toJson())),
-        'overs': overs.map((o) => o.map((b) => b.toJson()).toList()).toList(),
-        'overBowlers': overBowlers,
-        'currentOverBalls': currentOverBalls.map((b) => b.toJson()).toList(),
-        'strikerIndex': strikerIndex,
-        'nonStrikerIndex': nonStrikerIndex,
-        'currentBowlerIndex': currentBowlerIndex,
-        'target': target,
-        'isSecondInnings': isSecondInnings,
-      };
+    'id': id,
+    'teamOneName': teamOneName,
+    'teamTwoName': teamTwoName,
+    'battingTeamName': battingTeamName,
+    'bowlingTeamName': bowlingTeamName,
+    'oversLimit': oversLimit,
+    'createdAt': createdAt.toIso8601String(),
+    'completedAt': completedAt?.toIso8601String(),
+    'totalRuns': totalRuns,
+    'totalWickets': totalWickets,
+    'currentOverIndex': currentOverIndex,
+    'ballsInCurrentOver': ballsInCurrentOver,
+    'battingOrder': battingOrder,
+    'bowlingOrder': bowlingOrder,
+    'battingStats': battingStats.map((k, v) => MapEntry(k, v.toJson())),
+    'bowlingStats': bowlingStats.map((k, v) => MapEntry(k, v.toJson())),
+    'overs': overs.map((o) => o.map((b) => b.toJson()).toList()).toList(),
+    'overBowlers': overBowlers,
+    'currentOverBalls': currentOverBalls.map((b) => b.toJson()).toList(),
+    'strikerIndex': strikerIndex,
+    'nonStrikerIndex': nonStrikerIndex,
+    'currentBowlerIndex': currentBowlerIndex,
+    'target': target,
+    'isSecondInnings': isSecondInnings,
+  };
 
   factory MatchModel.fromJson(Map<String, dynamic> json) {
-    final oversList = (json['overs'] as List<dynamic>?)
-            ?.map((o) => (o as List<dynamic>)
-                .map((b) => Ball.fromJson(b as Map<String, dynamic>))
-                .toList())
+    final oversList =
+        (json['overs'] as List<dynamic>?)
+            ?.map(
+              (o) => (o as List<dynamic>)
+                  .map((b) => Ball.fromJson(b as Map<String, dynamic>))
+                  .toList(),
+            )
             .toList() ??
         [];
-    final currentOverBallsList = (json['currentOverBalls'] as List<dynamic>?)
+    final currentOverBallsList =
+        (json['currentOverBalls'] as List<dynamic>?)
             ?.map((b) => Ball.fromJson(b as Map<String, dynamic>))
             .toList() ??
         [];
-    final battingStatsMap = (json['battingStats'] as Map<String, dynamic>?)?.map(
-          (k, v) => MapEntry(k, PlayerStats.fromJson(v as Map<String, dynamic>)),
+    final battingStatsMap =
+        (json['battingStats'] as Map<String, dynamic>?)?.map(
+          (k, v) =>
+              MapEntry(k, PlayerStats.fromJson(v as Map<String, dynamic>)),
         ) ??
         {};
-    final bowlingStatsMap = (json['bowlingStats'] as Map<String, dynamic>?)?.map(
-          (k, v) => MapEntry(k, BowlerStats.fromJson(v as Map<String, dynamic>)),
+    final bowlingStatsMap =
+        (json['bowlingStats'] as Map<String, dynamic>?)?.map(
+          (k, v) =>
+              MapEntry(k, BowlerStats.fromJson(v as Map<String, dynamic>)),
         ) ??
         {};
     return MatchModel(
@@ -162,12 +172,18 @@ class MatchModel {
       totalWickets: json['totalWickets'] as int? ?? 0,
       currentOverIndex: json['currentOverIndex'] as int? ?? 0,
       ballsInCurrentOver: json['ballsInCurrentOver'] as int? ?? 0,
-      battingOrder: List<String>.from(json['battingOrder'] as List<dynamic>? ?? []),
-      bowlingOrder: List<String>.from(json['bowlingOrder'] as List<dynamic>? ?? []),
+      battingOrder: List<String>.from(
+        json['battingOrder'] as List<dynamic>? ?? [],
+      ),
+      bowlingOrder: List<String>.from(
+        json['bowlingOrder'] as List<dynamic>? ?? [],
+      ),
       battingStats: battingStatsMap,
       bowlingStats: bowlingStatsMap,
       overs: oversList,
-      overBowlers: List<String>.from(json['overBowlers'] as List<dynamic>? ?? []),
+      overBowlers: List<String>.from(
+        json['overBowlers'] as List<dynamic>? ?? [],
+      ),
       currentOverBalls: currentOverBallsList,
       strikerIndex: json['strikerIndex'] as int? ?? 0,
       nonStrikerIndex: json['nonStrikerIndex'] as int? ?? 1,

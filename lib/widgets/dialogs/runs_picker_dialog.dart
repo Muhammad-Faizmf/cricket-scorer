@@ -18,9 +18,8 @@ Future<int?> showRunsPickerDialog(
           children: [
             IconButton(
               icon: const Icon(Icons.remove),
-              onPressed: () => setDialogState(
-                () => value = (value - 1).clamp(min, max),
-              ),
+              onPressed: () =>
+                  setDialogState(() => value = (value - 1).clamp(min, max)),
             ),
             Text(
               '$value',
@@ -28,9 +27,8 @@ Future<int?> showRunsPickerDialog(
             ),
             IconButton(
               icon: const Icon(Icons.add),
-              onPressed: () => setDialogState(
-                () => value = (value + 1).clamp(min, max),
-              ),
+              onPressed: () =>
+                  setDialogState(() => value = (value + 1).clamp(min, max)),
             ),
           ],
         ),

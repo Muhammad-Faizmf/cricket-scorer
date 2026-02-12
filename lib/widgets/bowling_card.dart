@@ -46,12 +46,19 @@ class BowlingCard extends StatelessWidget {
                 TableRow(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 6,
+                        horizontal: 6,
+                      ),
                       child: Row(
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(right: 6),
-                            child: Icon(Icons.sports_baseball, size: 14, color: Colors.amber.shade300),
+                            child: Icon(
+                              Icons.sports_baseball,
+                              size: 14,
+                              color: Colors.amber.shade300,
+                            ),
                           ),
                           Expanded(
                             child: Text(
@@ -67,7 +74,9 @@ class BowlingCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    _tableCell('${currentBowler.balls ~/ 6}.${currentBowler.balls % 6}'),
+                    _tableCell(
+                      '${currentBowler.balls ~/ 6}.${currentBowler.balls % 6}',
+                    ),
                     _tableCell('${currentBowler.runs}'),
                     _tableCell('${currentBowler.wickets}'),
                     _tableCell(currentBowler.economy.toStringAsFixed(1)),
@@ -82,22 +91,22 @@ class BowlingCard extends StatelessWidget {
   }
 
   Widget _tableHeaderCell(String text) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
-        child: Text(
-          text,
-          style: TextStyle(
-            color: Colors.amber.shade300,
-            fontSize: 14,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      );
+    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+    child: Text(
+      text,
+      style: TextStyle(
+        color: Colors.amber.shade300,
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
+  );
 
   Widget _tableCell(String text) => Padding(
-        padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
-        child: Text(
-          text,
-          style: TextStyle(color: Colors.amber.shade200, fontSize: 14),
-        ),
-      );
+    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
+    child: Text(
+      text,
+      style: TextStyle(color: Colors.amber.shade200, fontSize: 14),
+    ),
+  );
 }

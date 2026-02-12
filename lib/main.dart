@@ -14,7 +14,10 @@ class CricketApp extends StatelessWidget {
       title: 'Cricket Scorer',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.amber, brightness: Brightness.dark),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.amber,
+          brightness: Brightness.dark,
+        ),
         useMaterial3: true,
         scaffoldBackgroundColor: const Color(0xFF1A5C42),
       ),

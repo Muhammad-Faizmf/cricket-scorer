@@ -51,7 +51,10 @@ class _MatchScreenContentState extends State<_MatchScreenContent> {
     });
   }
 
-  Future<void> _showNewBowlerDialog(BuildContext context, MatchProvider provider) async {
+  Future<void> _showNewBowlerDialog(
+    BuildContext context,
+    MatchProvider provider,
+  ) async {
     if (!mounted || provider.isMatchOver) return;
     String name;
     do {
@@ -129,7 +132,9 @@ class _MatchScreenContentState extends State<_MatchScreenContent> {
           },
           child: Scaffold(
             appBar: AppBar(
-              title: Text('${provider.match.teamOneName} vs ${provider.match.teamTwoName}'),
+              title: Text(
+                '${provider.match.teamOneName} vs ${provider.match.teamTwoName}',
+              ),
               backgroundColor: const Color(0xFF0D3B2C),
               foregroundColor: Colors.amber.shade100,
             ),
@@ -162,11 +167,17 @@ class _MatchScreenContentState extends State<_MatchScreenContent> {
                             const SizedBox(height: 12),
                             if (provider.match.battingOrder.isNotEmpty)
                               BattingCard(
-                                strikerId: provider.match.battingOrder.isNotEmpty
-                                    ? provider.match.battingOrder[provider.match.strikerIndex]
+                                strikerId:
+                                    provider.match.battingOrder.isNotEmpty
+                                    ? provider.match.battingOrder[provider
+                                          .match
+                                          .strikerIndex]
                                     : null,
-                                nonStrikerId: provider.match.battingOrder.length > 1
-                                    ? provider.match.battingOrder[provider.match.nonStrikerIndex]
+                                nonStrikerId:
+                                    provider.match.battingOrder.length > 1
+                                    ? provider.match.battingOrder[provider
+                                          .match
+                                          .nonStrikerIndex]
                                     : null,
                                 battingStats: provider.match.battingStats,
                               ),
@@ -175,15 +186,21 @@ class _MatchScreenContentState extends State<_MatchScreenContent> {
                               Builder(
                                 builder: (context) {
                                   final order = provider.match.bowlingOrder;
-                                  final currentBowlerId = order[provider.match.currentBowlerIndex];
-                                  final bowler = provider.match.bowlingStats[currentBowlerId];
-                                  if (bowler == null) return const SizedBox.shrink();
+                                  final currentBowlerId =
+                                      order[provider.match.currentBowlerIndex];
+                                  final bowler = provider
+                                      .match
+                                      .bowlingStats[currentBowlerId];
+                                  if (bowler == null)
+                                    return const SizedBox.shrink();
                                   return BowlingCard(currentBowler: bowler);
                                 },
                               ),
                             ],
                             const SizedBox(height: 12),
-                            _CurrentOverSection(balls: provider.match.currentOverBalls),
+                            _CurrentOverSection(
+                              balls: provider.match.currentOverBalls,
+                            ),
                             const SizedBox(height: 16),
                             OverHistory(
                               overs: provider.match.overs,
@@ -198,7 +215,8 @@ class _MatchScreenContentState extends State<_MatchScreenContent> {
                       onWide: () => _onWide(context, provider),
                       onNoBall: () => _onNoBall(context, provider),
                       onStats: () => _openStats(context, provider),
-                      onNewBowlerNeeded: () => _showNewBowlerDialog(context, provider),
+                      onNewBowlerNeeded: () =>
+                          _showNewBowlerDialog(context, provider),
                     ),
                   ],
                 ),

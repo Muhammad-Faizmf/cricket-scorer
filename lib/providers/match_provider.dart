@@ -6,8 +6,8 @@ import '../services/storage_service.dart';
 
 class MatchProvider extends ChangeNotifier {
   MatchProvider(MatchModel match)
-      : _match = MatchModel.fromJson(match.toJson()),
-        _storage = StorageService();
+    : _match = MatchModel.fromJson(match.toJson()),
+      _storage = StorageService();
 
   MatchModel _match;
   final StorageService _storage;
@@ -16,7 +16,8 @@ class MatchProvider extends ChangeNotifier {
   MatchModel get match => _match;
 
   bool get isMatchOver =>
-      _match.totalBallsBowled >= _match.oversLimit * 6 || _match.totalWickets >= 10;
+      _match.totalBallsBowled >= _match.oversLimit * 6 ||
+      _match.totalWickets >= 10;
 
   Future<void> loadAndSave() async {
     final states = await _storage.loadUndoStates(_match.id);
@@ -73,8 +74,9 @@ class MatchProvider extends ChangeNotifier {
       b.ballsInOver.add(ball);
     }
     _match.currentOverBalls.add(ball);
-    final validBallsInOver =
-        _match.currentOverBalls.where((x) => !x.isWide && !x.isNoBall).length;
+    final validBallsInOver = _match.currentOverBalls
+        .where((x) => !x.isWide && !x.isNoBall)
+        .length;
     if (validBallsInOver >= 6) {
       _match.overs.add(List.from(_match.currentOverBalls));
       _match.overBowlers.add(bowlerId);
@@ -101,7 +103,9 @@ class MatchProvider extends ChangeNotifier {
 
   void undo() {
     if (isMatchOver || _undoStates.isEmpty) return;
-    _match = MatchModel.fromJson(Map<String, dynamic>.from(_undoStates.removeLast()));
+    _match = MatchModel.fromJson(
+      Map<String, dynamic>.from(_undoStates.removeLast()),
+    );
     _save();
     notifyListeners();
   }
@@ -120,7 +124,9 @@ class MatchProvider extends ChangeNotifier {
     );
     _applyBall(ball);
     final name = nextBatsmanName.trim();
-    if (!_match.battingOrder.any((n) => n.toLowerCase() == name.toLowerCase())) {
+    if (!_match.battingOrder.any(
+      (n) => n.toLowerCase() == name.toLowerCase(),
+    )) {
       _match.battingOrder.add(name);
       _match.battingStats[name] = PlayerStats(playerId: name, name: name);
     }

@@ -41,7 +41,10 @@ class StorageService {
     await saveMatchWithUndo(match, []);
   }
 
-  Future<void> saveMatchWithUndo(MatchModel match, List<Map<String, dynamic>> undoStates) async {
+  Future<void> saveMatchWithUndo(
+    MatchModel match,
+    List<Map<String, dynamic>> undoStates,
+  ) async {
     final file = await _matchesFile;
     List<dynamic> list = [];
     if (await file.exists()) {
@@ -49,7 +52,9 @@ class StorageService {
       list = jsonDecode(contents) as List<dynamic>;
     }
     final matchJson = match.toJson();
-    matchJson['undoStates'] = undoStates.length > 50 ? undoStates.sublist(undoStates.length - 50) : undoStates;
+    matchJson['undoStates'] = undoStates.length > 50
+        ? undoStates.sublist(undoStates.length - 50)
+        : undoStates;
     final index = list.indexWhere((e) => (e as Map)['id'] == match.id);
     if (index >= 0) {
       list[index] = matchJson;
@@ -69,7 +74,10 @@ class StorageService {
         final m = e as Map<String, dynamic>;
         if (m['id'] == matchId) {
           final states = m['undoStates'] as List<dynamic>?;
-          return states?.map((s) => Map<String, dynamic>.from(s as Map)).toList() ?? [];
+          return states
+                  ?.map((s) => Map<String, dynamic>.from(s as Map))
+                  .toList() ??
+              [];
         }
       }
     } catch (_) {}

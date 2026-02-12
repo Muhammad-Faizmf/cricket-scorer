@@ -102,7 +102,10 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Text('Batsman One', style: TextStyle(color: Colors.amber.shade100)),
+                Text(
+                  'Batsman One',
+                  style: TextStyle(color: Colors.amber.shade100),
+                ),
                 const SizedBox(height: 4),
                 TextField(
                   controller: _batsmanOneController,
@@ -110,7 +113,9 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                     hintText: 'Player 1',
                     filled: true,
                     fillColor: const Color(0xFF144A38),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: BorderSide(color: Colors.amber.shade700),
@@ -119,7 +124,10 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                   style: const TextStyle(color: Colors.white),
                 ),
                 const SizedBox(height: 12),
-                Text('Batsman Two', style: TextStyle(color: Colors.amber.shade100)),
+                Text(
+                  'Batsman Two',
+                  style: TextStyle(color: Colors.amber.shade100),
+                ),
                 const SizedBox(height: 4),
                 TextField(
                   controller: _batsmanTwoController,
@@ -127,7 +135,9 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                     hintText: 'Player 2',
                     filled: true,
                     fillColor: const Color(0xFF144A38),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: BorderSide(color: Colors.amber.shade700),
@@ -152,7 +162,9 @@ class _PlayerSetupScreenState extends State<PlayerSetupScreen> {
                     hintText: 'Bowler name',
                     filled: true,
                     fillColor: const Color(0xFF144A38),
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: BorderSide(color: Colors.amber.shade700),

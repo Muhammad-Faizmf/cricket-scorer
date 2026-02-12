@@ -14,9 +14,9 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
       if (!mounted) return;
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (_) => const HomeScreen()),
-      );
+      Navigator.of(
+        context,
+      ).pushReplacement(MaterialPageRoute(builder: (_) => const HomeScreen()));
     });
   }
 
@@ -28,7 +28,8 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Image.asset(
           'assets/splash_cricket.png',
           fit: BoxFit.contain,
-          errorBuilder: (_, __, ___) => const Icon(Icons.sports_cricket, size: 120, color: Colors.white),
+          errorBuilder: (_, __, ___) =>
+              const Icon(Icons.sports_cricket, size: 120, color: Colors.white),
         ),
       ),
     );

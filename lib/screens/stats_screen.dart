@@ -47,7 +47,13 @@ class StatsScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Batting', style: TextStyle(color: Colors.amber.shade200, fontWeight: FontWeight.w600)),
+                        Text(
+                          'Batting',
+                          style: TextStyle(
+                            color: Colors.amber.shade200,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                         const SizedBox(height: 8),
                         Table(
                           columnWidths: const {
@@ -58,7 +64,8 @@ class StatsScreen extends StatelessWidget {
                             4: FlexColumnWidth(0.6),
                             5: FlexColumnWidth(1),
                           },
-                          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                          defaultVerticalAlignment:
+                              TableCellVerticalAlignment.middle,
                           children: [
                             TableRow(
                               decoration: BoxDecoration(color: Colors.black26),
@@ -75,7 +82,10 @@ class StatsScreen extends StatelessWidget {
                               TableRow(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 6,
+                                      horizontal: 6,
+                                    ),
                                     child: Text(
                                       '${p.name}${p.isOut ? '' : '*'}',
                                       style: const TextStyle(
@@ -110,7 +120,13 @@ class StatsScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Bowling', style: TextStyle(color: Colors.amber.shade200, fontWeight: FontWeight.w600)),
+                        Text(
+                          'Bowling',
+                          style: TextStyle(
+                            color: Colors.amber.shade200,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
                         const SizedBox(height: 8),
                         Table(
                           columnWidths: const {
@@ -120,7 +136,8 @@ class StatsScreen extends StatelessWidget {
                             3: FlexColumnWidth(0.6),
                             4: FlexColumnWidth(1),
                           },
-                          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+                          defaultVerticalAlignment:
+                              TableCellVerticalAlignment.middle,
                           children: [
                             TableRow(
                               decoration: BoxDecoration(color: Colors.black26),
@@ -136,10 +153,16 @@ class StatsScreen extends StatelessWidget {
                               TableRow(
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 6),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 6,
+                                      horizontal: 6,
+                                    ),
                                     child: Text(
                                       b.name,
-                                      style: const TextStyle(color: Colors.white, fontSize: 14),
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 14,
+                                      ),
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                   ),

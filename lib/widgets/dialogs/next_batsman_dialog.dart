@@ -24,13 +24,22 @@ Future<String?> showNextBatsmanDialog(
                 decoration: const InputDecoration(hintText: 'Player name'),
                 autofocus: true,
                 onChanged: (_) => setState(() => errorMessage = null),
-                onSubmitted: (v) => _validate(ctx, v, getBattingOrder, setState, (e) => errorMessage = e),
+                onSubmitted: (v) => _validate(
+                  ctx,
+                  v,
+                  getBattingOrder,
+                  setState,
+                  (e) => errorMessage = e,
+                ),
               ),
               if (errorMessage != null) ...[
                 const SizedBox(height: 8),
                 Text(
                   errorMessage!,
-                  style: TextStyle(color: Theme.of(ctx).colorScheme.error, fontSize: 12),
+                  style: TextStyle(
+                    color: Theme.of(ctx).colorScheme.error,
+                    fontSize: 12,
+                  ),
                   softWrap: true,
                 ),
               ],
@@ -41,7 +50,13 @@ Future<String?> showNextBatsmanDialog(
           ElevatedButton(
             onPressed: controller.text.trim().isEmpty
                 ? null
-                : () => _validate(ctx, controller.text, getBattingOrder, setState, (e) => errorMessage = e),
+                : () => _validate(
+                    ctx,
+                    controller.text,
+                    getBattingOrder,
+                    setState,
+                    (e) => errorMessage = e,
+                  ),
             child: const Text('OK'),
           ),
         ],
@@ -61,7 +76,9 @@ void _validate(
   if (name.isEmpty) return;
   final battingOrder = getBattingOrder();
   if (battingOrder.any((n) => n.toLowerCase() == name.toLowerCase())) {
-    setState(() => setError('This player has already batted, enter another one'));
+    setState(
+      () => setError('This player has already batted, enter another one'),
+    );
   } else {
     Navigator.of(ctx).pop(name);
   }

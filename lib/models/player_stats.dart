@@ -23,24 +23,24 @@ class PlayerStats {
   double get strikeRate => balls > 0 ? (runs / balls) * 100 : 0.0;
 
   Map<String, dynamic> toJson() => {
-        'playerId': playerId,
-        'name': name,
-        'runs': runs,
-        'balls': balls,
-        'fours': fours,
-        'sixes': sixes,
-        'isOut': isOut,
-      };
+    'playerId': playerId,
+    'name': name,
+    'runs': runs,
+    'balls': balls,
+    'fours': fours,
+    'sixes': sixes,
+    'isOut': isOut,
+  };
 
   factory PlayerStats.fromJson(Map<String, dynamic> json) => PlayerStats(
-        playerId: json['playerId'] as String,
-        name: json['name'] as String,
-        runs: json['runs'] as int? ?? 0,
-        balls: json['balls'] as int? ?? 0,
-        fours: json['fours'] as int? ?? 0,
-        sixes: json['sixes'] as int? ?? 0,
-        isOut: json['isOut'] as bool? ?? false,
-      );
+    playerId: json['playerId'] as String,
+    name: json['name'] as String,
+    runs: json['runs'] as int? ?? 0,
+    balls: json['balls'] as int? ?? 0,
+    fours: json['fours'] as int? ?? 0,
+    sixes: json['sixes'] as int? ?? 0,
+    isOut: json['isOut'] as bool? ?? false,
+  );
 }
 
 /// Bowling stats for a bowler in this match.
@@ -67,18 +67,18 @@ class BowlerStats {
   }
 
   Map<String, dynamic> toJson() => {
-        'playerId': playerId,
-        'name': name,
-        'balls': balls,
-        'runs': runs,
-        'wickets': wickets,
-      };
+    'playerId': playerId,
+    'name': name,
+    'balls': balls,
+    'runs': runs,
+    'wickets': wickets,
+  };
 
   factory BowlerStats.fromJson(Map<String, dynamic> json) => BowlerStats(
-        playerId: json['playerId'] as String,
-        name: json['name'] as String,
-        balls: json['balls'] as int? ?? 0,
-        runs: json['runs'] as int? ?? 0,
-        wickets: json['wickets'] as int? ?? 0,
-      );
+    playerId: json['playerId'] as String,
+    name: json['name'] as String,
+    balls: json['balls'] as int? ?? 0,
+    runs: json['runs'] as int? ?? 0,
+    wickets: json['wickets'] as int? ?? 0,
+  );
 }
