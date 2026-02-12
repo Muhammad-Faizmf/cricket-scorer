@@ -151,7 +151,6 @@ class _NewMatchSetupScreenState extends State<NewMatchSetupScreen> {
                 ),
                 const SizedBox(height: 8),
                 if (t1.isNotEmpty)
-                  // ignore: deprecated_member_use
                   RadioListTile<String>(
                     title: Text(
                       t1,
@@ -163,7 +162,6 @@ class _NewMatchSetupScreenState extends State<NewMatchSetupScreen> {
                     onChanged: (v) => setState(() => _battingTeam = v),
                   ),
                 if (t2.isNotEmpty)
-                  // ignore: deprecated_member_use
                   RadioListTile<String>(
                     title: Text(
                       t2,
