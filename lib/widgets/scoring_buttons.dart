@@ -106,7 +106,7 @@ class _RunButton extends StatelessWidget {
         ? Colors.green
         : AppColors.ball1to5;
     return Material(
-      color: color.withOpacity(disabled ? 0.5 : 1),
+      color: color.withValues(alpha: disabled ? 0.5 : 1),
       borderRadius: BorderRadius.circular(8),
       child: InkWell(
         onTap: disabled ? null : onTap,

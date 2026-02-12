@@ -38,7 +38,7 @@ class StatsScreen extends StatelessWidget {
             children: [
               if (allBatsmen.isNotEmpty)
                 Card(
-                  color: Colors.white.withOpacity(0.12),
+                  color: Colors.white.withValues(alpha: 0.12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -111,7 +111,7 @@ class StatsScreen extends StatelessWidget {
               if (allBatsmen.isNotEmpty) const SizedBox(height: 16),
               if (bowlerStats.isNotEmpty)
                 Card(
-                  color: Colors.white.withOpacity(0.12),
+                  color: Colors.white.withValues(alpha: 0.12),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),

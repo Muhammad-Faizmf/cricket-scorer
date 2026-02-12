@@ -191,8 +191,9 @@ class _MatchScreenContentState extends State<_MatchScreenContent> {
                                   final bowler = provider
                                       .match
                                       .bowlingStats[currentBowlerId];
-                                  if (bowler == null)
+                                  if (bowler == null) {
                                     return const SizedBox.shrink();
+                                  }
                                   return BowlingCard(currentBowler: bowler);
                                 },
                               ),

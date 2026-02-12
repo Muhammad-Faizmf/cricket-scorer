@@ -174,7 +174,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             final m = _matches[index];
                             return Card(
                               margin: const EdgeInsets.only(bottom: 12),
-                              color: Colors.white.withOpacity(0.12),
+                              color: Colors.white.withValues(alpha: 0.12),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(12),
                               ),

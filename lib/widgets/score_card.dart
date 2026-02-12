@@ -38,7 +38,7 @@ class ScoreCard extends StatelessWidget {
             ),
           ),
         Card(
-          color: Colors.white.withOpacity(0.12),
+          color: Colors.white.withValues(alpha: 0.12),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(

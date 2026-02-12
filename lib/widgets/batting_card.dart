@@ -17,7 +17,7 @@ class BattingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     if (battingStats.isEmpty) return const SizedBox.shrink();
     return Card(
-      color: Colors.white.withOpacity(0.12),
+      color: Colors.white.withValues(alpha: 0.12),
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
