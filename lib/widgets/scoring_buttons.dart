@@ -34,7 +34,7 @@ class ScoringButtons extends StatelessWidget {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [1, 2, 3, 4, 5, 6]
+            children: [0, 1, 2, 3, 4, 5, 6]
                 .map(
                   (r) => _RunButton(
                     runs: r,
@@ -100,11 +100,13 @@ class _RunButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = runs == 4
-        ? Colors.orange
-        : runs == 6
-        ? Colors.green
-        : AppColors.ball1to5;
+    final color = runs == 0
+        ? Colors.grey
+        : runs == 4
+            ? Colors.orange
+            : runs == 6
+                ? Colors.green
+                : AppColors.ball1to5;
     return Material(
       color: color.withValues(alpha: disabled ? 0.5 : 1),
       borderRadius: BorderRadius.circular(8),
